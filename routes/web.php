@@ -12,3 +12,6 @@ Route::post('/vote/submit', [VoteController::class, 'submitVote'])->name('vote.s
 Route::get('/success', [VoteController::class, 'success'])->name('vote.success');
 
 Route::get('/results', [VoteController::class, 'results'])->name('vote.results');
+
+Route::get('/admin/tokens', [VoteController::class, 'adminTokens'])->name('tokens.index');
+Route::post('/admin/tokens/generate', [VoteController::class, 'generateTokens'])->name('tokens.generate');

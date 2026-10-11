@@ -7,6 +7,7 @@ use App\Models\Token;
 use App\Models\Vote;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class VoteController extends Controller
 {
@@ -101,5 +102,50 @@ class VoteController extends Controller
         $totalVotes = Vote::count();
 
         return view('vote.results', compact('candidates', 'totalVotes'));
+    }
+
+    // Menampilkan halaman generator dan daftar token
+    public function adminTokens()
+    {
+        $tokens = Token::orderBy('id', 'desc')->paginate(20);
+        $totalTokens = Token::count();
+        $usedTokens = Token::where('is_used', true)->count();
+        $availableTokens = Token::where('is_used', false)->count();
+
+        return view('vote.admin_tokens', compact('tokens', 'totalTokens', 'usedTokens', 'availableTokens'));
+    }
+
+    // Menghasilkan token acak unik secara massal
+    public function generateTokens(Request $request)
+    {
+    $request->validate([
+        'amount' => 'required|integer|min:1|max:500'
+    ]);
+
+    $amount = $request->amount;
+    $newTokens = [];
+
+    for ($i = 0; $i < $amount; $i++) {
+        // Buat kode 6 digit alfanumerik kapital
+        $code = strtoupper(Str::random(6));
+
+        // Hindari duplikasi kode yang sudah ada
+        while (Token::where('token', $code)->exists()) {
+            $code = strtoupper(Str::random(6));
+        }
+
+        $newTokens[] = [
+            'token' => $code,
+            'is_used' => false,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ];
+
+    }
+
+    // Insert massal agar proses cepat
+    Token::insert($newTokens);
+
+    return back()->with('success', "Berhasil membuat {$amount} token baru!");
     }
 }
