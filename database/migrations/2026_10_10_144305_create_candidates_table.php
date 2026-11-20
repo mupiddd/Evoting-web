@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('vision_mission');
-            $table->string('photo')->nullable();
+            $table->text('photo')->nullable();
             $table->timestamps();
         });
     }
