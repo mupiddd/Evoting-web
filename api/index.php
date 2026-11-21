@@ -21,7 +21,7 @@ foreach ($storagePaths as $dir) {
 $environmentVariables = [
     'APP_NAME' => 'VoteForge',
     'APP_ENV' => 'production',
-    'APP_DEBUG' => 'false',
+    'APP_DEBUG' => 'true',
     'APP_KEY' => 'base64:tpN520b2lD8wmpmq/EX3A5eGe0yzWujvNx3WNPbe07c=',
     'APP_SERVICES_CACHE' => '/tmp/services.php',
     'APP_PACKAGES_CACHE' => '/tmp/packages.php',
