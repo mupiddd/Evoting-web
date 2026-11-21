@@ -35,7 +35,6 @@
         "DB_PORT": "5432",
         "DB_DATABASE": "neondb",
         "DB_USERNAME": "neondb_owner",
-        "DB_PASSWORD": "npg_5r0DkQjGlJzZ",
         "DB_SSLMODE": "require",
         "ADMIN_PASSWORD": "admin123"
     }

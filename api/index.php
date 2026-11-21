@@ -36,8 +36,8 @@ $environmentVariables = [
     'DB_HOST' => "ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech;options='endpoint=ep-frosty-rice-bivb0692-pooler'",
     'DB_PORT' => '5432',
     'DB_DATABASE' => 'neondb',
-    'DB_USERNAME' => 'neondb_owner',
-    'DB_PASSWORD' => 'npg_5r0DkQjGlJzZ',
+    'DB_USERNAME' => getenv('DB_USERNAME') ?: 'neondb_owner',
+    'DB_PASSWORD' => getenv('DB_PASSWORD') ?: '',
     'DB_SSLMODE' => 'require',
     'ADMIN_PASSWORD' => 'admin123',
 ];
