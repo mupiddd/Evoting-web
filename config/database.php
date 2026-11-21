@@ -87,7 +87,9 @@ return [
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'ep-frosty-rice-bivb0692.c-5.ap-southeast-1.aws.neon.tech'),
+            'host' => env('DB_ENDPOINT')
+                ? env('DB_HOST', 'ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech').";options='endpoint=".env('DB_ENDPOINT')."'"
+                : env('DB_HOST', 'ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech'),
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'neondb'),
             'username' => env('DB_USERNAME', 'neondb_owner'),
