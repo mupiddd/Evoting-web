@@ -21,7 +21,7 @@ foreach ($storagePaths as $dir) {
 $environmentVariables = [
     'APP_NAME' => 'VoteForge',
     'APP_ENV' => 'production',
-    'APP_DEBUG' => 'false',
+    'APP_DEBUG' => 'true',
     'APP_KEY' => 'base64:tpN520b2lD8wmpmq/EX3A5eGe0yzWujvNx3WNPbe07c=',
     'APP_SERVICES_CACHE' => '/tmp/services.php',
     'APP_PACKAGES_CACHE' => '/tmp/packages.php',
@@ -32,6 +32,8 @@ $environmentVariables = [
     'CACHE_STORE' => 'array',
     'SESSION_DRIVER' => 'cookie',
     'LOG_CHANNEL' => 'stderr',
+    'DATABASE_URL' => 'postgresql://neondb_owner:npg_5r0DkQjGlJzZ@ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
+    'DB_URL' => 'postgresql://neondb_owner:npg_5r0DkQjGlJzZ@ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech/neondb?sslmode=require',
     'DB_CONNECTION' => 'pgsql',
     'DB_HOST' => 'ep-frosty-rice-bivb0692-pooler.c-5.ap-southeast-1.aws.neon.tech',
     'DB_PORT' => '5432',
