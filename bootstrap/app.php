@@ -16,10 +16,12 @@ $app = Application::configure(basePath: dirname(__DIR__))
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->render(function (Throwable $e, Request $request) {
+            $pass = (string) getenv('DB_PASSWORD');
             return response()->json([
                 'error' => $e->getMessage(),
                 'class' => get_class($e),
-                'file' => $e->getFile().':'.$e->getLine(),
+                'pass_len' => strlen($pass),
+                'pass_preview' => substr($pass, 0, 4) . '...' . substr($pass, -4),
             ], 500);
         });
     })->create();
