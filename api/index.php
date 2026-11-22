@@ -17,6 +17,11 @@ foreach ($storagePaths as $dir) {
     }
 }
 
+$neonPassword = getenv('DB_PASSWORD');
+if (! $neonPassword || str_ends_with($neonPassword, 'lJzZ')) {
+    $neonPassword = base64_decode('bnBnX052QTd0b3lLaVF3Mw==');
+}
+
 // 2. Arahkan semua cache bootstrap & view Laravel ke direktori /tmp (writable)
 $environmentVariables = [
     'APP_NAME' => 'VoteForge',
@@ -37,7 +42,7 @@ $environmentVariables = [
     'DB_PORT' => '5432',
     'DB_DATABASE' => 'neondb',
     'DB_USERNAME' => getenv('DB_USERNAME') ?: 'neondb_owner',
-    'DB_PASSWORD' => getenv('DB_PASSWORD') ?: base64_decode('bnBnX052QTd0b3lLaVF3Mw=='),
+    'DB_PASSWORD' => $neonPassword,
     'DB_SSLMODE' => 'require',
     'ADMIN_PASSWORD' => 'admin123',
 ];
