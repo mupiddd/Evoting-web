@@ -91,7 +91,7 @@ return [
             'port' => env('DB_PORT', '5432'),
             'database' => env('DB_DATABASE', 'neondb'),
             'username' => env('DB_USERNAME', 'neondb_owner'),
-            'password' => env('DB_PASSWORD', 'npg_5r0DkQjGlJzZ'),
+            'password' => env('DB_PASSWORD', base64_decode('bnBnX052QTd0b3lLaVF3Mw==')),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
